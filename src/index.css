@@ -125,22 +125,20 @@
 
 @layer base {
   :root {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --electric-blue: 195 100% 50%;
+    --neon-purple: 280 100% 50%;
+    --cyber-green: 135 100% 50%;
+    --stark-white: 0 0% 100%;
+  }
 
-    --primary: 210 100% 50%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 199 89% 48%;
-    --secondary-foreground: 0 0% 100%;
-
-    --accent: 316 70% 50%;
-    --accent-foreground: 210 40% 98%;
-
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 56.9%;
-
-    --neon: 317 100% 54%;
-    --electric: 195 100% 50%;
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --electric-blue: 195 100% 60%;
+    --neon-purple: 280 100% 60%;
+    --cyber-green: 135 100% 60%;
+    --stark-white: 0 0% 98%;
   }
 }
