@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './Header';
 
 interface MainLayoutProps {
   sidebar?: React.ReactNode;
@@ -7,13 +8,15 @@ interface MainLayoutProps {
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ sidebar, children, infoPanel }) => {
+  const handleMobileMenuClick = () => {
+    // Will implement sheet functionality later
+    console.log('Mobile menu clicked');
+  };
+
   return (
     <div className="min-h-screen w-full">
-      {/* Header */}
-      <header className="w-full h-16 bg-gray-800 text-white flex items-center px-4 mb-4">
-        <h1 className="text-xl font-bold">App Header</h1>
-      </header>
-
+      <Header onMobileMenuClick={handleMobileMenuClick} />
+      
       {/* Grid container */}
       <div className="grid h-full w-full
         grid-cols-1
