@@ -1,97 +1,97 @@
-# AI Agentic Architect v2
+# AiAgenticArchitectV2
 
-## Overview
-Modern React application built with Vite, TypeScript, and Tailwind CSS, featuring shadcn/ui components and a futuristic theme system.
+An intelligent agent management system built with modern web technologies. Features real-time agent monitoring, task assignment, and multi-context processing capabilities.
+
+## Tech Stack
+
+- **Framework:** React 18 with Vite
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS with custom theme
+- **UI Components:** shadcn/ui
+- **State Management:** Zustand
+- **Real-time:** WebSocket
+- **Form Handling:** React Hook Form + Zod
 
 ## Features
-- 🎨 Customizable theme system with light/dark modes
-- 📱 Responsive layout with mobile-first design
-- 🧩 Modular component architecture
-- 🔒 Type-safe development with TypeScript
-- 🎯 Semantic HTML and accessibility features
+
+- 🤖 Multi-agent task management
+- 🌐 Real-time agent status updates
+- 🎨 Dark/Light theme support
+- 📱 Responsive layout
+- ⌨️ Fully keyboard accessible
+- 🔒 Type-safe development
 
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js (v18+)
-- npm/pnpm
+- npm or pnpm
 
 ### Installation
+
 ```bash
+# Clone the repository
+git clone https://github.com/yourusername/ai-agentic-architect-v2.git
+
+# Navigate to project directory
+cd ai-agentic-architect-v2
+
+# Install dependencies
 npm install
 ```
 
+### Environment Setup
+
+Create a `.env` file based on `.env.example`:
+
+```env
+VITE_WS_URL=ws://localhost:3001  # WebSocket server URL
+```
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+- `npm run type-check` - Check TypeScript types
+
 ### Development
+
+Start the development server:
+
 ```bash
 npm run dev
 ```
 
-### Build
-```bash
-npm run build
-```
+Visit `http://localhost:5173` in your browser.
 
 ## Project Structure
+
 ```
 src/
-  ├── components/     # Reusable UI components
-  │   ├── layout/    # Layout components
-  │   └── ui/        # Shadcn UI components
-  ├── features/      # Feature-specific components
-  │   └── mcp/       # MCP (Multi-Context Protocol) feature
-  ├── hooks/         # Custom React hooks
-  ├── lib/           # Utilities and helpers
-  ├── styles/        # Global styles and themes
-  └── types/         # TypeScript type definitions
+├── components/       # Reusable UI components
+├── features/        # Feature-specific components
+├── lib/            # Utilities and API clients
+├── store/          # Zustand state management
+└── styles/         # Global styles and theme
 ```
 
-## Theming
-The application uses a custom theme system built on Tailwind CSS and Shadcn UI. See:
-- [Tailwind Configuration](./docs/tailwind-config.md)
-- [Shadcn Installation](./docs/shadcn-install-notes.md)
+## Environment Variables
 
-## Expanding the ESLint configuration
+| Variable | Description | Required |
+|----------|-------------|----------|
+| VITE_WS_URL | WebSocket server URL | Yes |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Contributing
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. Fork the repository
+2. Create a feature branch
+3. Commit changes
+4. Push to the branch
+5. Open a Pull Request
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## License
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+MIT License - see [LICENSE](LICENSE) for details
