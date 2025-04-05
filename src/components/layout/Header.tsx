@@ -7,6 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Menu, User } from 'lucide-react';
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 interface HeaderProps {
   onMobileMenuClick?: () => void;
@@ -36,6 +37,8 @@ const Header: React.FC<HeaderProps> = ({ onMobileMenuClick }) => {
           <Button variant="ghost" className="text-white">Dashboard</Button>
           <Button variant="ghost" className="text-white">Projects</Button>
         </nav>
+        
+        <ThemeToggle />
         
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
