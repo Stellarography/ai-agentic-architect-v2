@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { AgentControlPanel } from './AgentControlPanel';
 
 interface MCPDashboardProps {
   // Props will be added as features are implemented
@@ -24,27 +25,31 @@ export const MCPDashboard: React.FC<MCPDashboardProps> = () => {
         </h1>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {useAgentStore.getState().agents.map((agent) => (
-          <Card key={agent.id} className="backdrop-blur-sm border-electric-blue/20 
-            shadow-lg shadow-electric-blue/5 hover:shadow-electric-blue/10 transition-shadow">
-            <CardHeader>
-              <CardTitle className="flex justify-between items-center">
-                {agent.name}
-                <Badge variant={
-                  agent.status === 'working' ? 'default' :
-                  agent.status === 'completed' ? 'success' :
-                  agent.status === 'error' ? 'destructive' : 'secondary'
-                }>
-                  {agent.status}
-                </Badge>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">{agent.currentTask || 'No active task'}</p>
-            </CardContent>
-          </Card>
-        ))}
+      <div className="grid grid-cols-1 gap-6">
+        <AgentControlPanel />
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {useAgentStore.getState().agents.map((agent) => (
+            <Card key={agent.id} className="backdrop-blur-sm border-electric-blue/20 
+              shadow-lg shadow-electric-blue/5 hover:shadow-electric-blue/10 transition-shadow">
+              <CardHeader>
+                <CardTitle className="flex justify-between items-center">
+                  {agent.name}
+                  <Badge variant={
+                    agent.status === 'working' ? 'default' :
+                    agent.status === 'completed' ? 'success' :
+                    agent.status === 'error' ? 'destructive' : 'secondary'
+                  }>
+                    {agent.status}
+                  </Badge>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{agent.currentTask || 'No active task'}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
     </div>
   );
