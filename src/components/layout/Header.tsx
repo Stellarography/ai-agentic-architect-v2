@@ -15,28 +15,41 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onMobileMenuClick }) => {
   return (
-    <header className="w-full h-16 bg-gray-800 text-white flex items-center justify-between px-4">
+    <header className="w-full h-16 bg-background/80 backdrop-blur-sm border-b border-electric-blue/20 flex items-center justify-between px-4">
       {/* Mobile Menu Button */}
       <Button 
         variant="ghost" 
         size="icon" 
-        className="md:hidden text-white"
+        className="md:hidden hover:bg-electric-blue/10 transition-colors"
         onClick={onMobileMenuClick}
+        aria-label="Toggle mobile menu"
       >
         <Menu className="h-6 w-6" />
       </Button>
 
       {/* Logo/Title */}
       <div className="flex items-center">
-        <h1 className="text-xl font-bold">AiAgenticArchitectV2</h1>
+        <h1 className="text-xl font-bold bg-gradient-to-r from-electric-blue to-neon-purple bg-clip-text text-transparent">
+          AiAgenticArchitectV2
+        </h1>
       </div>
 
       {/* Navigation/Profile */}
-      <div className="flex items-center gap-4">
-        <nav className="hidden md:flex items-center gap-4">
-          <Button variant="ghost" className="text-white">Dashboard</Button>
-          <Button variant="ghost" className="text-white">Projects</Button>
-        </nav>
+      <nav className="flex items-center gap-4" aria-label="User navigation">
+        <div className="hidden md:flex items-center gap-4">
+          <Button 
+            variant="ghost" 
+            className="hover:bg-electric-blue/10 hover:text-electric-blue transition-colors"
+          >
+            Dashboard
+          </Button>
+          <Button 
+            variant="ghost" 
+            className="hover:bg-electric-blue/10 hover:text-electric-blue transition-colors"
+          >
+            Projects
+          </Button>
+        </div>
         
         <ThemeToggle />
         
@@ -52,7 +65,7 @@ const Header: React.FC<HeaderProps> = ({ onMobileMenuClick }) => {
             <DropdownMenuItem>Logout</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-      </div>
+      </nav>
     </header>
   );
 };

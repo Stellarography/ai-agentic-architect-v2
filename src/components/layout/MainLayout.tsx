@@ -14,7 +14,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ sidebar, children, infoPanel })
   };
 
   return (
-    <div className="min-h-screen w-full">
+    <div className="min-h-screen w-full bg-background text-foreground">
       <Header onMobileMenuClick={handleMobileMenuClick} />
       
       {/* Grid container */}
@@ -25,19 +25,28 @@ const MainLayout: React.FC<MainLayoutProps> = ({ sidebar, children, infoPanel })
         gap-4 p-4"
       >
         {/* Sidebar */}
-        <div className="hidden md:block bg-gray-100 rounded-lg p-4 min-h-[500px]">
-          {sidebar || <div className="text-gray-500">Sidebar Content</div>}
-        </div>
+        <aside className="hidden md:block bg-gray-100/50 backdrop-blur-sm rounded-lg p-4 min-h-[500px] 
+          shadow-lg shadow-electric-blue/5 hover:shadow-electric-blue/10 transition-shadow"
+          aria-label="Sidebar"
+        >
+          {sidebar}
+        </aside>
 
         {/* Main Content Area */}
-        <main className="min-h-[calc(100vh-2rem)] bg-gray-50 rounded-lg p-4">
-          {children || <div className="text-gray-500">Main Content Area</div>}
+        <main className="min-h-[calc(100vh-2rem)] bg-gray-50/50 backdrop-blur-sm rounded-lg p-4
+          shadow-lg shadow-electric-blue/5" 
+          role="main"
+        >
+          {children}
         </main>
 
         {/* Info Panel */}
-        <div className="hidden md:block bg-gray-100 rounded-lg p-4">
-          {infoPanel || <div className="text-gray-500">Info Panel Content</div>}
-        </div>
+        <aside className="hidden md:block bg-gray-100/50 backdrop-blur-sm rounded-lg p-4
+          shadow-lg shadow-electric-blue/5 hover:shadow-electric-blue/10 transition-shadow"
+          aria-label="Information Panel"
+        >
+          {infoPanel}
+        </aside>
       </div>
     </div>
   );

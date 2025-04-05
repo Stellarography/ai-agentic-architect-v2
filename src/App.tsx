@@ -3,18 +3,24 @@ import MainLayout from './components/layout/MainLayout';
 
 // Placeholder components (can be moved to separate files later)
 const SidebarContent = () => (
-  <nav className="space-y-4">
-    <div className="p-2 hover:bg-gray-200 rounded">Home</div>
-    <div className="p-2 hover:bg-gray-200 rounded">Projects</div>
-    <div className="p-2 hover:bg-gray-200 rounded">Settings</div>
+  <nav className="space-y-4" aria-label="Main Navigation">
+    <button className="w-full p-2 hover:bg-electric-blue/10 hover:text-electric-blue transition-colors rounded focus:ring-2 focus:ring-electric-blue focus:outline-none">
+      Home
+    </button>
+    <button className="w-full p-2 hover:bg-electric-blue/10 hover:text-electric-blue transition-colors rounded focus:ring-2 focus:ring-electric-blue focus:outline-none">
+      Projects
+    </button>
+    <button className="w-full p-2 hover:bg-electric-blue/10 hover:text-electric-blue transition-colors rounded focus:ring-2 focus:ring-electric-blue focus:outline-none">
+      Settings
+    </button>
   </nav>
 );
 
 const InfoPanelContent = () => (
-  <div className="space-y-4">
+  <aside className="space-y-4" aria-label="Information Panel">
     <h2 className="font-bold text-lg">Details</h2>
     <p>Project information and metadata will appear here.</p>
-  </div>
+  </aside>
 );
 
 const App: React.FC = () => {
