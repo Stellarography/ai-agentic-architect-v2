@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MainLayout from './components/layout/MainLayout';
 import MCPDashboard from '@/features/mcp/MCPDashboard';
+import { wsClient } from '@/lib/websocket';
 
 // Placeholder components (can be moved to separate files later)
 const SidebarContent = () => (
@@ -25,6 +26,11 @@ const InfoPanelContent = () => (
 );
 
 const App: React.FC = () => {
+  useEffect(() => {
+    wsClient.connect();
+    return () => wsClient.disconnect();
+  }, []);
+
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <MainLayout
