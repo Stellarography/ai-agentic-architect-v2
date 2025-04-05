@@ -1,5 +1,6 @@
 import React from 'react';
 import MainLayout from './components/layout/MainLayout';
+import MCPDashboard from '@/features/mcp/MCPDashboard';
 
 // Placeholder components (can be moved to separate files later)
 const SidebarContent = () => (
@@ -25,16 +26,18 @@ const InfoPanelContent = () => (
 
 const App: React.FC = () => {
   return (
-    <MainLayout
-      sidebar={<SidebarContent />}
-      infoPanel={<InfoPanelContent />}
-    >
-      <div className="space-y-4">
-        <h1 className="text-2xl font-bold">Welcome to AI Agentic Architect</h1>
-        <p>This is the main content area where your app content will live.</p>
-        <p>React Router routes will be integrated here later.</p>
-      </div>
-    </MainLayout>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <MainLayout
+        sidebar={<SidebarContent />}
+        infoPanel={<MCPDashboard />}
+      >
+        <div className="space-y-4">
+          <h1 className="text-2xl font-bold">Welcome to AI Agentic Architect</h1>
+          <p>This is the main content area where your app content will live.</p>
+          <p>React Router routes will be integrated here later.</p>
+        </div>
+      </MainLayout>
+    </ThemeProvider>
   );
 };
 

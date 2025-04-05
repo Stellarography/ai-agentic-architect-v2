@@ -1,7 +1,14 @@
 # AI Agentic Architect v2
 
 ## Overview
-Modern React application built with Vite, TypeScript, and Tailwind CSS, featuring shadcn/ui components.
+Modern React application built with Vite, TypeScript, and Tailwind CSS, featuring shadcn/ui components and a futuristic theme system.
+
+## Features
+- 🎨 Customizable theme system with light/dark modes
+- 📱 Responsive layout with mobile-first design
+- 🧩 Modular component architecture
+- 🔒 Type-safe development with TypeScript
+- 🎯 Semantic HTML and accessibility features
 
 ## Getting Started
 
@@ -28,13 +35,20 @@ npm run build
 ```
 src/
   ├── components/     # Reusable UI components
-  ├── features/      # Feature-specific components and logic
+  │   ├── layout/    # Layout components
+  │   └── ui/        # Shadcn UI components
+  ├── features/      # Feature-specific components
+  │   └── mcp/       # MCP (Multi-Context Protocol) feature
   ├── hooks/         # Custom React hooks
-  ├── lib/           # Utilities, types, and helpers
-  ├── pages/         # Page components/routes
-  ├── store/         # Zustand state management
-  └── styles/        # Global styles and themes
+  ├── lib/           # Utilities and helpers
+  ├── styles/        # Global styles and themes
+  └── types/         # TypeScript type definitions
 ```
+
+## Theming
+The application uses a custom theme system built on Tailwind CSS and Shadcn UI. See:
+- [Tailwind Configuration](./docs/tailwind-config.md)
+- [Shadcn Installation](./docs/shadcn-install-notes.md)
 
 ## Expanding the ESLint configuration
 
