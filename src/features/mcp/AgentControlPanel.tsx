@@ -19,6 +19,8 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { assignTaskToAgentAPI } from '@/lib/aiApi';
+import { useState } from 'react';
 
 const formSchema = z.object({
   agentId: z.string().min(1, "Please select an agent"),
@@ -28,6 +30,7 @@ const formSchema = z.object({
 export function AgentControlPanel() {
   const agents = useAgentStore((state) => state.agents);
   const updateAgentStatus = useAgentStore((state) => state.updateAgentStatus);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -36,9 +39,26 @@ export function AgentControlPanel() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    updateAgentStatus(values.agentId, "working", values.task);
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    try {
+      const response = await assignTaskToAgentAPI(values.agentId, values.task);
+      if (response.success) {
+        // Let WebSocket handle the state update
+        form.reset();
+      } else {
+        form.setError('root', { 
+          message: response.error || 'Failed to assign task' 
+        });
+      }
+    } catch (error) {
+      console.error('Failed to assign task:', error);
+      form.setError('root', { 
+        message: 'Network error occurred' 
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -90,8 +110,9 @@ export function AgentControlPanel() {
           <Button 
             type="submit" 
             className="w-full bg-electric-blue hover:bg-electric-blue/80"
+            disabled={isSubmitting}
           >
-            Assign Task
+            {isSubmitting ? 'Assigning...' : 'Assign Task'}
           </Button>
         </form>
       </Form>
