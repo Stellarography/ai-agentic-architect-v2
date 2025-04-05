@@ -1,11 +1,40 @@
-# React + TypeScript + Vite
+# AI Agentic Architect v2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+Modern React application built with Vite, TypeScript, and Tailwind CSS, featuring shadcn/ui components.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisites
+- Node.js (v18+)
+- npm/pnpm
+
+### Installation
+```bash
+npm install
+```
+
+### Development
+```bash
+npm run dev
+```
+
+### Build
+```bash
+npm run build
+```
+
+## Project Structure
+```
+src/
+  ├── components/     # Reusable UI components
+  ├── features/      # Feature-specific components and logic
+  ├── hooks/         # Custom React hooks
+  ├── lib/           # Utilities, types, and helpers
+  ├── pages/         # Page components/routes
+  ├── store/         # Zustand state management
+  └── styles/        # Global styles and themes
+```
 
 ## Expanding the ESLint configuration
 
