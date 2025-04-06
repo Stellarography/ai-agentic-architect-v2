@@ -1,15 +1,23 @@
-import { createContext, useContext, useEffect, useState } from "react"
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 
+/** Available theme options */
 type Theme = "dark" | "light" | "system"
 
-type ThemeProviderProps = {
-  children: React.ReactNode
+/** Props for the ThemeProvider component */
+interface ThemeProviderProps {
+  /** React child components */
+  children: ReactNode  // Add this line to fix the error
+  /** Optional default theme setting */
   defaultTheme?: Theme
+  /** Optional local storage key for theme persistence */
   storageKey?: string
 }
 
-type ThemeProviderState = {
+/** Theme context state interface */
+interface ThemeProviderState {
+  /** Current theme setting */
   theme: Theme
+  /** Function to update the current theme */
   setTheme: (theme: Theme) => void
 }
 
@@ -20,6 +28,11 @@ const initialState: ThemeProviderState = {
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 
+/**
+ * Theme provider component that manages application-wide theme state
+ * @param props - ThemeProvider properties
+ * @returns ThemeProvider component
+ */
 export function ThemeProvider({
   children,
   defaultTheme = "system",
@@ -63,6 +76,11 @@ export function ThemeProvider({
   )
 }
 
+/**
+ * Custom hook to access theme context
+ * @returns ThemeProviderState object containing theme and setTheme
+ * @throws Error if used outside of ThemeProvider
+ */
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext)
 

@@ -119,26 +119,3 @@
   }
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --electric-blue: 195 100% 50%;
-    --neon-purple: 280 100% 50%;
-    --cyber-green: 135 100% 50%;
-    --stark-white: 0 0% 100%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --electric-blue: 195 100% 60%;
-    --neon-purple: 280 100% 60%;
-    --cyber-green: 135 100% 60%;
-    --stark-white: 0 0% 98%;
-  }
-}

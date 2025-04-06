@@ -59,6 +59,41 @@ src/
 - Form validation with Zod
 - API integration for task submission
 
+### WebSocket Integration
+WebSocket client implementation (`src/lib/websocket.ts`):
+- Singleton pattern for connection management
+- Auto-reconnection with 5s delay
+- Type-safe message handling
+- Integration with Zustand store
+
+### Agent State Management
+Using Zustand for centralized state (`src/store/useAgentStore.ts`):
+```typescript
+interface AgentStore {
+  agents: Agent[]              // List of all agents
+  addAgent: (agent: Agent)     // Add new agent
+  updateAgentStatus: (         // Update agent status
+    id: string,
+    status: AgentStatus,
+    currentTask?: string
+  ) => void
+}
+```
+
+### Theme System
+Theme management (`src/components/theme-provider.tsx`):
+- Light/Dark/System theme support
+- CSS variables for consistent theming
+- Local storage persistence
+- Context-based theme access
+
+### Form Handling
+Agent control form implementation:
+- Zod schema validation
+- React Hook Form integration
+- Error handling and feedback
+- TypeScript type inference
+
 ## State Management
 
 Using Zustand for its simplicity and flexibility:
@@ -124,6 +159,37 @@ Using shadcn/ui for:
 - Cards
 - Modals
 - Toast notifications
+
+## Environment Configuration
+Key environment variables (`env.d.ts`):
+```typescript
+interface ImportMetaEnv {
+  readonly VITE_WS_URL: string  // WebSocket server URL
+  // Add other env vars as needed
+}
+```
+
+## TypeScript Configuration
+Key compiler options:
+- Strict type checking enabled
+- Path aliases for clean imports
+- Module bundler optimization
+- React JSX support
+
+## File Structure
+```
+src/
+├── components/           # Reusable UI components
+│   ├── layout/          # Layout components
+│   └── ui/              # UI components (shadcn/ui)
+├── features/            # Feature modules
+│   └── mcp/            # MCP dashboard
+├── lib/                # Utilities
+│   ├── websocket.ts    # WebSocket client
+│   └── types.ts        # Type definitions
+└── store/              # State management
+    └── useAgentStore.ts # Agent state
+```
 
 ## Future Considerations
 

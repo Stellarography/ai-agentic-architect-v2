@@ -5,14 +5,28 @@ type WebSocketMessage = {
   payload: any;
 };
 
+/**
+ * WebSocket client for real-time communication.
+ * Implements singleton pattern and auto-reconnection.
+ */
 class WebSocketClient {
+  /** Active WebSocket connection */
   private ws: WebSocket | null = null;
+  /** WebSocket server URL from environment */
   private readonly url: string;
 
+  /**
+   * Creates WebSocket client instance.
+   * Uses VITE_WS_URL from environment or falls back to localhost.
+   */
   constructor() {
     this.url = import.meta.env.VITE_WS_URL || 'ws://localhost:3001';
   }
 
+  /** 
+   * Establishes WebSocket connection if not already connected.
+   * Implements auto-reconnection on disconnect.
+   */
   connect() {
     if (this.ws) return;
 

@@ -1,8 +1,20 @@
 {
+  // TypeScript compiler configuration
   "compilerOptions": {
+    // Store incremental compilation information
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    
+    // Target ECMAScript version
     "target": "ES2022",
-    "lib": ["ES2023"],
+    
+    // Include type definitions for latest ECMAScript and DOM features
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    
+    // Module system to use
     "module": "ESNext",
     "skipLibCheck": true,
 
@@ -18,7 +30,19 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    // Ensure consistent file casing across different operating systems
+    "forceConsistentCasingInFileNames": true,
+
+    /* Strict Checks */
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true
   },
+  // Files to include in compilation
   "include": ["vite.config.ts"]
 }
