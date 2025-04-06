@@ -20,10 +20,10 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    "allowImportingTsExtensions": false,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "noEmit": true,
+    "noEmit": false,
 
     /* Linting */
     "strict": true,
@@ -41,8 +41,16 @@
     "strictBindCallApply": true,
     "strictPropertyInitialization": true,
     "noImplicitThis": true,
-    "useUnknownInCatchVariables": true
+    "useUnknownInCatchVariables": true,
+
+    /* New Options */
+    "composite": true,
+    "allowSyntheticDefaultImports": true
   },
   // Files to include in compilation
-  "include": ["vite.config.ts"]
+  "include": ["src/server/**/*"],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  }
 }

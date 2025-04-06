@@ -29,14 +29,13 @@ const SidebarContent = () => (
 
 const App: React.FC = () => {
   useEffect(() => {
-    // Ensure wsClient is initialized before connecting
-    // You might want error handling here
     wsClient.connect();
-    // Return the cleanup function
+    
+    // Ensure cleanup runs only once on unmount
     return () => {
       wsClient.disconnect();
     };
-  }, []); // Empty dependency array ensures this runs only once on mount
+  }, []); // Empty dependency array for single setup/cleanup
 
   return (
     // No ThemeProvider here! Just return your main layout.

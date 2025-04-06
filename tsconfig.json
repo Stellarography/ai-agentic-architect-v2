@@ -10,12 +10,24 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["node", "vite/client"],
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
-  "include": ["src"],
+  "include": ["src", "vite.config.ts"],
   "references": [
     {
       "path": "./tsconfig.node.json"
     }
-  ]
+  ],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+    "compilerOptions": {
+      "module": "NodeNext",
+      "target": "ESNext",
+      "moduleResolution": "NodeNext"
+    }
+  }
 }

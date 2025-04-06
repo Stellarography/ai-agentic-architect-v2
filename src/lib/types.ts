@@ -52,4 +52,22 @@ export type BaseEntity = {
     // updatedAt: Date; // Inherited from BaseEntity if extended
   }
   
+  // --- WebSocket Types ---
+
+  export type WebSocketMessageType = 
+    | 'agent_status_update'
+    | 'task_assigned'
+    | 'task_completed'
+    | 'error';
+
+  export interface WebSocketMessage<T = unknown> {
+    type: WebSocketMessageType;
+    payload: T;
+  }
+
+  export interface WebSocketErrorPayload {
+    code: number;
+    message: string;
+  }
+
   // --- Add other specific types below ---

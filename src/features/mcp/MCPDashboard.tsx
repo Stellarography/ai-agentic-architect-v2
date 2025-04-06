@@ -37,8 +37,9 @@ export const MCPDashboard: React.FC<MCPDashboardProps> = () => {
                   {agent.name}
                   <Badge variant={
                     agent.status === 'working' ? 'default' :
-                    agent.status === 'completed' ? 'success' :
-                    agent.status === 'error' ? 'destructive' : 'secondary'
+                    agent.status === 'error' ? 'destructive' :
+                    // Default to 'secondary' for 'idle' and 'offline'
+                    'secondary'
                   }>
                     {agent.status}
                   </Badge>

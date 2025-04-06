@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Agent } from '@/lib/types';
 import { agentApi } from '@/features/agents/agentApiSlice';
 
-interface AgentState {
+export interface AgentState {
   selectedAgentId: string | null;
   agentSettings: Record<string, unknown>;
 }
