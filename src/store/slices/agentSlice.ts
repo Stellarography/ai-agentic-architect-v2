@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { Agent } from '@/lib/types';
+import { Agent } from '@/lib/types';
+import { agentApi } from '@/features/agents/agentApiSlice';
 
 interface AgentState {
   selectedAgentId: string | null;
@@ -24,6 +25,14 @@ export const agentSlice = createSlice({
     clearSelectedAgent: (state) => {
       state.selectedAgentId = null;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addMatcher(
+      agentApi.endpoints.getAgents.matchFulfilled,
+      (state, action) => {
+        // Handle successful agents fetch if needed
+      }
+    );
   },
 });
 
