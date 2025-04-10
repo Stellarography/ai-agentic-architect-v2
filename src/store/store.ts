@@ -1,24 +1,28 @@
 import { configureStore } from '@reduxjs/toolkit';
-import agentReducer, { AgentState } from './slices/agentSlice';
+import agentReducer from './slices/agentSlice';
 import { agentApi } from '@/features/agents/agentApiSlice';
+import { monitoringApi } from '@/features/monitoring/monitoringSlice'; // Import monitoring slice
+import { workflowApi, workflowUIReducer } from '@/features/workflows/workflowSlice'; // Import workflow slice
 
-interface StoreState {
-  agents: AgentState;
-  [agentApi.reducerPath]: ReturnType<typeof agentApi.reducer>;
-}
-
-export const store = configureStore<StoreState>({
+export const store = configureStore({ // Remove explicit <StoreState> generic
   reducer: {
     agents: agentReducer,
     [agentApi.reducerPath]: agentApi.reducer,
+    [monitoringApi.reducerPath]: monitoringApi.reducer, // Add monitoring reducer
+    [workflowApi.reducerPath]: workflowApi.reducer, // Add workflow reducer
+    workflowUI: workflowUIReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware({
       serializableCheck: {
-        // Ignore these action types
         ignoredActions: ['persist/PERSIST'],
       },
-    }).concat(agentApi.middleware),
+    }).prepend(
+      agentApi.middleware,
+      monitoringApi.middleware,
+      workflowApi.middleware
+    );
+  },
   devTools: process.env.NODE_ENV !== 'production',
 });
 

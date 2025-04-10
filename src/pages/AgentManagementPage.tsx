@@ -32,48 +32,58 @@ const AgentManagementPage: React.FC = () => {
     e.preventDefault();
     try {
       if (editingAgent) {
-        // Ensure we pass the correct structure expected by updateAgent mutation
-        await updateAgent({
-          id: editingAgent.id,
-          name: formData.name,
-          description: formData.description,
-          status: formData.status,
-          // Ensure other fields match the expected Partial<Agent> type if needed
-        }).unwrap();
-        toast.success("Agent updated successfully"); // Use sonner syntax
+        await toast.promise(
+          updateAgent({
+            id: editingAgent.id,
+            ...formData
+          }).unwrap(),
+          {
+            loading: 'Updating agent...',
+            success: 'Agent updated successfully',
+            error: (err) => ({
+              title: 'Update failed',
+              description: err.data?.message || 'Could not update agent'
+            })
+          }
+        );
       } else {
-         // Ensure we pass the correct structure expected by addAgent mutation
-        await addAgent({
-          name: formData.name,
-          description: formData.description,
-          status: formData.status,
-          // Ensure other fields match the expected Partial<Agent> type if needed
-        }).unwrap();
-        toast.success("Agent created successfully"); // Use sonner syntax
+        await toast.promise(
+          addAgent(formData).unwrap(),
+          {
+            loading: 'Creating agent...',
+            success: 'Agent created successfully',
+            error: (err) => ({
+              title: 'Creation failed',
+              description: err.data?.message || 'Could not create agent'
+            })
+          }
+        );
       }
       setIsAddDialogOpen(false);
       setEditingAgent(null);
-      // Reset form with default status
       setFormData({ name: '', description: '', status: 'inactive' });
     } catch (error) {
-      console.error("Failed to save agent:", error);
-      toast.error("Error Saving Agent", { // Use sonner syntax
-        description: "Failed to save agent. Please try again.",
-        // variant is handled by toast.error()
-      });
+      // Error is handled by toast.promise
+      console.error('Operation failed:', error);
     }
   };
 
   const handleDelete = async (id: string) => {
     try {
-      await deleteAgent(id).unwrap();
-      toast.success("Agent deleted successfully"); // Use sonner syntax
+      toast.promise(
+        deleteAgent(id).unwrap(),
+        {
+          loading: 'Deleting agent...',
+          success: 'Agent deleted successfully',
+          error: (err) => ({
+            title: 'Failed to delete agent',
+            description: err.data?.message || 'Please try again'
+          })
+        }
+      );
     } catch (error) {
-      console.error("Failed to delete agent:", error);
-      toast.error("Error Deleting Agent", { // Use sonner syntax
-        description: "Failed to delete agent. Please try again.",
-        // variant is handled by toast.error()
-      });
+      // Error is handled by toast.promise
+      console.error('Delete operation failed:', error);
     }
   };
 

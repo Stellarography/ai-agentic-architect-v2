@@ -1,9 +1,4 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+/* Keep this file empty or add project-specific global styles NOT handled by Tailwind/Shadcn */
 
 .logo {
   height: 6em;
@@ -33,9 +28,7 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
+/* Removed conflicting .card style */
 
 .read-the-docs {
   color: #888;

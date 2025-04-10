@@ -1,32 +1,15 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
-
-/** Available theme options */
-type Theme = "dark" | "light" | "system"
+import { useEffect, useState, type ReactNode } from "react"
+import { ThemeProviderContext, type Theme } from "@/hooks/use-theme" // Import from the new hook file
 
 /** Props for the ThemeProvider component */
 interface ThemeProviderProps {
   /** React child components */
-  children: ReactNode  // Add this line to fix the error
+  children: ReactNode
   /** Optional default theme setting */
   defaultTheme?: Theme
   /** Optional local storage key for theme persistence */
   storageKey?: string
 }
-
-/** Theme context state interface */
-interface ThemeProviderState {
-  /** Current theme setting */
-  theme: Theme
-  /** Function to update the current theme */
-  setTheme: (theme: Theme) => void
-}
-
-const initialState: ThemeProviderState = {
-  theme: "system",
-  setTheme: () => null,
-}
-
-const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 
 /**
  * Theme provider component that manages application-wide theme state
@@ -74,18 +57,4 @@ export function ThemeProvider({
       {children}
     </ThemeProviderContext.Provider>
   )
-}
-
-/**
- * Custom hook to access theme context
- * @returns ThemeProviderState object containing theme and setTheme
- * @throws Error if used outside of ThemeProvider
- */
-export const useTheme = () => {
-  const context = useContext(ThemeProviderContext)
-
-  if (context === undefined)
-    throw new Error("useTheme must be used within a ThemeProvider")
-
-  return context
 }

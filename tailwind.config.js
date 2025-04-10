@@ -1,14 +1,16 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-    content: [
-        "./index.html",
-        "./src/**/*.{js,ts,jsx,tsx}",
-    ]
+import tailwindcssAnimate from 'tailwindcss-animate'; // Use import
+
+export default { // Use export default
   darkMode: ["class"],
-  content: ["./src/**/*.{ts,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
+        // Make sure these CSS variables are defined in your global CSS (e.g., index.css)
         'electric-blue': 'hsl(var(--electric-blue))',
         'neon-purple': 'hsl(var(--neon-purple))',
         'cyber-green': 'hsl(var(--cyber-green))',
@@ -18,5 +20,7 @@ module.exports = {
       }
     }
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    tailwindcssAnimate // Use the imported variable
+  ],
 }

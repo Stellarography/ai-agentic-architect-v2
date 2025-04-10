@@ -1,3 +1,4 @@
+// src/router/AppRoutes
 import React from 'react';
 import {
   createBrowserRouter,

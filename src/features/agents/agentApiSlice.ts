@@ -47,15 +47,25 @@ const mockAgents = [
   }
 ];
 
+// Define types for agent configuration
+export interface AgentConfiguration {
+  apiKey?: string;
+  endpoint?: string;
+  timeout?: number;
+  retries?: number;
+  headers?: Record<string, string>;
+  // Add other expected configuration properties here
+}
+
 // Define a type for the expected agent data
 export interface Agent {
-    id: string;
-    name: string;
-    description?: string;
-    status: 'active' | 'inactive' | 'error';
-    configuration?: Record<string, any>;
-    createdAt: string;
-    lastUsed?: string;
+  id: string;
+  name: string;
+  description?: string;
+  status: 'active' | 'inactive' | 'error';
+  configuration?: AgentConfiguration;
+  createdAt: string;
+  lastUsed?: string;
 }
 
 // Mock API implementation

@@ -8,123 +8,111 @@ A scalable, futuristic AI workflow manager built with React, Vite, Tailwind, and
 
 **GitHub Repository:** [https://github.com/your-username/ai-agentic-architect-v2](https://github.com/your-username/ai-agentic-architect-v2)
 
-An intelligent agent management system built with modern web technologies. Features real-time agent monitoring, task assignment, and multi-context processing capabilities.
+## Key Updates
+
+- **Fixed Tailwind CSS configuration** (tailwind.config.js, postcss.config.cjs)
+- **Removed conflicting styles** from App.css
+- **Updated routing structure** with proper layout nesting
+- **Added theme support** with dark/light mode switching
 
 ## Tech Stack
 
 - **Framework:** React 18 with Vite
 - **Language:** TypeScript
-- **Styling:** Tailwind CSS with custom theme
-- **UI Components:** shadcn/ui
+- **Styling:** 
+  - Tailwind CSS v3.4 with custom theme
+  - PostCSS for processing
+  - shadcn/ui component library
 - **State Management:** Zustand
 - **Real-time:** WebSocket
 - **Form Handling:** React Hook Form + Zod
+- **Routing:** React Router v6
 
-## Features
+## Configuration Notes
 
-- 🤖 Multi-agent task management
-- 🌐 Real-time agent status updates
-- 🎨 Dark/Light theme support
-- 📱 Responsive layout
-- ⌨️ Fully keyboard accessible
-- 🔒 Type-safe development
+### Critical Configuration Files
 
-## Getting Started
+1. **tailwind.config.js** - Configured with:
+   - Proper content paths for JIT compilation
+   - Dark mode class strategy
+   - Extended theme colors
 
-### Prerequisites
+2. **postcss.config.cjs** - Includes:
+   - Tailwind CSS plugin
+   - Autoprefixer
 
-- Node.js (v18+)
-- npm or pnpm
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/ai-agentic-architect-v2.git
-
-# Navigate to project directory
-cd ai-agentic-architect-v2
-
-# Install dependencies
-npm install
-```
-
-### Environment Setup
-
-Create a `.env` file based on `.env.example`:
-
-```env
-VITE_WS_URL=ws://localhost:3001  # WebSocket server URL
-```
-
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-- `npm run type-check` - Check TypeScript types
-
-### Development
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
-Visit `http://localhost:5173` in your browser.
+3. **src/index.css** - Contains:
+   - Tailwind directives (@tailwind base, components, utilities)
+   - Custom CSS variables for theming
+   - Base styles
 
 ## Project Structure
 
 ```
 src/
-├── components/       # Reusable UI components
-├── features/        # Feature-specific components
-├── lib/            # Utilities and API clients
-├── store/          # Zustand state management
-└── styles/         # Global styles and theme
+├── components/          # Reusable UI components
+│   ├── layout/         # Layout components (MainLayout, Header)
+│   ├── theme-provider.tsx # Theme context provider
+│   └── ui/            # shadcn/ui components (button, card, etc.)
+├── features/          # Feature-specific modules
+│   ├── agents/        # Agent management features
+│   └── mcp/          # Multi-Context Protocol features
+├── hooks/            # Custom React hooks
+│   ├── use-theme.ts  # Theme management
+│   └── use-form-field.ts # Form field logic
+├── lib/              # Utilities and services
+│   ├── types.ts      # Type definitions
+│   ├── variants/     # Component variants
+│   └── websocket.ts  # WebSocket client
+├── pages/            # Route components
+├── router/           # Routing configuration
+├── store/            # State management
+│   └── slices/       # Zustand slices
+├── styles/           # Global styles
+│   ├── App.css       # Minimal global styles
+│   └── index.css     # Tailwind entry point
+└── main.tsx          # Application entry point
 ```
 
-## Environment Variables
-
-This project uses environment variables for configuration. Copy `.env.example` to `.env` and configure:
-
-| Variable | Description | Required | Default |
-|----------|-------------|----------|---------|
-| `VITE_APP_NAME` | Application name | No | `AI Agentic Architect` |
-| `VITE_API_BASE_URL` | Backend API base URL | Yes | `http://localhost:3000/api` |
-| `VITE_WS_URL` | WebSocket server URL | Yes | `ws://localhost:3001` |
-| `VITE_DEFAULT_THEME` | Default theme (dark/light) | No | `dark` |
-| `VITE_ENABLE_ANALYTICS` | Enable analytics tracking | No | `false` |
-| `VITE_ENABLE_MOCK_API` | Use mock API responses | No | `true` |
-| `VITE_LOG_LEVEL` | Logging verbosity | No | `info` |
-
-### Development Setup
+## Installation & Setup
 
 ```bash
-# Copy example environment file
-cp .env.example .env
+# Install dependencies
+npm install
 
-# Edit .env with your values
-nano .env
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
 ```
 
-### Production Deployment
+## Critical Development Notes
 
-Configure these variables in your hosting provider's settings (Vercel, Netlify, etc.). 
-Note: Only variables prefixed with `VITE_` are exposed to the frontend.
+1. **Tailwind CSS Requirements:**
+   - Must have both tailwind.config.js and postcss.config.cjs properly configured
+   - Requires @tailwind directives in src/index.css
+   - Content paths must include all template files
 
-## Contributing
+2. **Theme Support:**
+   - Uses CSS variables for theming
+   - Supports system preference + manual toggle
+   - Persists in localStorage
 
-1. Fork the repository
-2. Create a feature branch
-3. Commit changes
-4. Push to the branch
-5. Open a Pull Request
+3. **Styling Approach:**
+   - Prefer Tailwind utility classes
+   - Use shadcn/ui components where possible
+   - Minimal global CSS (only in App.css)
+
+## Troubleshooting
+
+If styles aren't applying:
+1. Verify PostCSS config exists
+2. Check Tailwind content paths
+3. Ensure @tailwind directives are in index.css
+4. Restart dev server after config changes
+5. Hard refresh browser (Ctrl+Shift+R)
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
-
-Copyright (c) 2024 AI Agentic Architect V2
+MIT License - Copyright (c) 2024 AI Agentic Architect V2

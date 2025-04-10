@@ -1,54 +1,38 @@
 // src/App.tsx
 import React, { useEffect } from 'react';
-import MainLayout from './components/layout/MainLayout'; // Use '@/' alias if configured: '@/components/layout/MainLayout'
+import MainLayout from '@/components/layout/MainLayout'; // Using alias for consistency
 import MCPDashboard from '@/features/mcp/MCPDashboard';
-import { wsClient } from '@/lib/websocket'; // Ensure wsClient is properly initialized and exported
+import { wsClient } from '@/lib/websocket'; // WebSocket client for real-time communication
 
-// Placeholder components (can be moved to separate files later)
-const SidebarContent = () => (
-  <nav className="space-y-4 p-4" aria-label="Main Navigation"> {/* Added padding */}
-    <button className="w-full p-2 text-left hover:bg-muted hover:text-foreground transition-colors rounded focus:ring-2 focus:ring-primary focus:outline-none">
-      Home
-    </button>
-    <button className="w-full p-2 text-left hover:bg-muted hover:text-foreground transition-colors rounded focus:ring-2 focus:ring-primary focus:outline-none">
-      Agents
-    </button>
-    <button className="w-full p-2 text-left hover:bg-muted hover:text-foreground transition-colors rounded focus:ring-2 focus:ring-primary focus:outline-none">
-      Settings
-    </button>
-  </nav>
-);
+// Placeholder for Sidebar Content - Define or import the actual component later
+const SidebarContent: React.FC = () => {
+  return <div className="p-4">Sidebar Placeholder</div>;
+};
 
-// InfoPanelContent might be replaced entirely by MCPDashboard or similar later
-// const InfoPanelContent = () => (
-//   <aside className="space-y-4 p-4" aria-label="Information Panel"> {/* Added padding */}
-//     <h2 className="font-bold text-lg">Details</h2>
-//     <p>Project information and metadata will appear here.</p>
-//   </aside>
-// );
-
+// Main Application Component
 const App: React.FC = () => {
   useEffect(() => {
-    wsClient.connect();
-    
-    // Ensure cleanup runs only once on unmount
+    // Effect hook to manage WebSocket connection lifecycle
+    wsClient.connect(); // Connect on component mount
+
+    // Cleanup function to disconnect WebSocket on component unmount
     return () => {
       wsClient.disconnect();
     };
-  }, []); // Empty dependency array for single setup/cleanup
+  }, []); // Empty dependency array ensures this effect runs only once on mount and cleanup on unmount
 
   return (
-    // No ThemeProvider here! Just return your main layout.
+    // Render the main application layout
     <MainLayout
-      sidebar={<SidebarContent />}
-      // Passing MCPDashboard directly to the infoPanel prop.
-      // Ensure MainLayout is designed to render this correctly.
-      infoPanel={<MCPDashboard />}
+      sidebar={<SidebarContent />} // Pass the (placeholder) sidebar component
+      infoPanel={<MCPDashboard />} // Pass the MCP Dashboard component to the info panel slot
     >
       {/* This is the main content area passed as children to MainLayout */}
-      <div className="p-4 space-y-4"> {/* Added padding */}
+      {/* Main content area passed as children to MainLayout */}
+      <div className="p-4 space-y-4"> {/* Basic styling for the content area */}
         <h1 className="text-2xl font-bold">Welcome to AI Agentic Architect</h1>
         <p>This is the main content area where your app content will live.</p>
+        {/* Placeholder text indicating future routing integration */}
         <p>React Router routes will be integrated here later.</p>
       </div>
     </MainLayout>

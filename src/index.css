@@ -1,6 +1,10 @@
-@import "tailwindcss/preflight"; /* Replaced @tailwind base */
-@tailwind utilities; /* Keep utilities, remove components */
+/* src/index.css */
+@tailwind base;      /* Inject Tailwind's base styles (Preflight) */
+@tailwind components; /* Inject Tailwind's component classes */
+@tailwind utilities; /* Inject Tailwind's utility classes */
 
+/* ... :root definitions ... */
+/* ... .dark definitions ... */
 
 :root {
   --radius: 0.625rem;
@@ -79,12 +83,14 @@
     --radius-xl: calc(var(--radius) + 4px);
   }
   
-  * {
+  /* {
     @apply border-border outline-ring/50;
-  }
+  } */
   
   body {
     @apply bg-background text-foreground;
   }
 }
+
+
 

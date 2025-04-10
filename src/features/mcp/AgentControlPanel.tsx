@@ -29,6 +29,8 @@ const formSchema = z.object({
 
 export function AgentControlPanel() {
   const agents = useAgentStore((state) => state.agents);
+  // TODO: Will be used for agent status updates
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const updateAgentStatus = useAgentStore((state) => state.updateAgentStatus);
   const [isSubmitting, setIsSubmitting] = useState(false);
 

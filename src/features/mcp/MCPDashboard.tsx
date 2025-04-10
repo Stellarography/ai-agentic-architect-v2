@@ -10,11 +10,9 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { AgentControlPanel } from './AgentControlPanel';
 
-interface MCPDashboardProps {
-  // Props will be added as features are implemented
-}
-
-export const MCPDashboard: React.FC<MCPDashboardProps> = () => {
+export const MCPDashboard = () => {
+  // TODO: Will be used for theme-specific styling
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { theme } = useTheme();
 
   return (

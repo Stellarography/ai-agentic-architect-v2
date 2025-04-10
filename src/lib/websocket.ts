@@ -71,7 +71,9 @@ export class WebSocketClient { // Added export
       this.attachEventHandlers();
       this.setupHeartbeat();
     } catch (error) {
-      this.handleError(new Event('Failed to create WebSocket'));
+      const message = error instanceof Error ? error.message : 'Failed to create WebSocket';
+      this.handleError(new Event(message));
+      console.error('WebSocket connection error:', error);
     }
   }
 
@@ -182,17 +184,18 @@ export class WebSocketClient { // Added export
 
   private handleMessage(message: WebSocketMessage) {
     switch (message.type) {
-      case 'agent_status_update':
+      case 'agent_status_update': {
         const { agentId, status, currentTask } = message.payload;
-        store.dispatch({ 
+        store.dispatch({
           type: 'agents/updateAgentStatus',
           payload: { agentId, status, currentTask }
         });
+      }
         break;
     }
   }
 
-  send(type: string, payload: any) {
+  send(type: string, payload: WebSocketPayload) {
     if (this.ws && this.ws.readyState === WebSocket.OPEN) {
       this.ws.send(JSON.stringify({ type, payload }));
     }

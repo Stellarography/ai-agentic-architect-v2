@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Agent } from '@/lib/types';
 import { agentApi } from '@/features/agents/agentApiSlice';
 
 export interface AgentState {
@@ -29,6 +28,7 @@ export const agentSlice = createSlice({
   extraReducers: (builder) => {
     builder.addMatcher(
       agentApi.endpoints.getAgents.matchFulfilled,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       (state, action) => {
         // Handle successful agents fetch if needed
       }
