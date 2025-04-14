@@ -27,4 +27,4 @@ const Sidebar: React.FC = () => {
 };
 
 export default Sidebar;
-```    4.  **Verify `AppRoutes.tsx` Usage:** Double-check `src/router/AppRoutes.tsx` again to ensure it's importing *this* `Sidebar` component and passing it to the `sidebar` prop of `<MainLayout />`.
+//   4.  **Verify `AppRoutes.tsx` Usage:** Double-check `src/router/AppRoutes.tsx` again to ensure it's importing *this* `Sidebar` component and passing it to the `sidebar` prop of `<MainLayout />`.

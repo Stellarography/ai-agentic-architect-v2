@@ -16,7 +16,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onMobileMenuClick }) => {
   return (
-    <header className="w-full h-16 bg-background/80 backdrop-blur-sm border-b border-electric-blue/20 flex items-center justify-between px-4">
+    <header className="sticky top-0 z-50 w-full h-16 bg-background/95 backdrop-blur-sm border-b border-electric-blue/20 flex items-center justify-between px-4">
       {/* Mobile Menu Button */}
       <Button 
         variant="ghost" 

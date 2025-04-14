@@ -1,10 +1,13 @@
-// src/App.tsx
+import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from './components/theme-provider' // Theme provider for dark/light mode
 import React, { useEffect } from 'react';
-import MainLayout from '@/components/layout/MainLayout'; // Using alias for consistency
-import MCPDashboard from '@/features/mcp/MCPDashboard';
+import MainLayout from '@/components/layout/MainLayout' // Using alias for consistency
+import MCPDashboard from '@/features/mcp/MCPDashboard'
 import { wsClient } from '@/lib/websocket'; // WebSocket client for real-time communication
-
+// import Router from './router' // Placeholder for future routing integration
 // Placeholder for Sidebar Content - Define or import the actual component later
+
+
 const SidebarContent: React.FC = () => {
   return <div className="p-4">Sidebar Placeholder</div>;
 };
@@ -23,7 +26,11 @@ const App: React.FC = () => {
 
   return (
     // Render the main application layout
-    <MainLayout
+    <BrowserRouter>
+     <ThemeProvider defaultTheme="dark" storageKey="ui-theme">
+      <MainLayout>
+       {/* <Router />  */}
+      
       sidebar={<SidebarContent />} // Pass the (placeholder) sidebar component
       infoPanel={<MCPDashboard />} // Pass the MCP Dashboard component to the info panel slot
     >
@@ -36,7 +43,9 @@ const App: React.FC = () => {
         <p>React Router routes will be integrated here later.</p>
       </div>
     </MainLayout>
+  </ThemeProvider>
+  </BrowserRouter>
   );
 };
 
-export default App;
+export default App

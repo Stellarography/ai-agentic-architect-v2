@@ -1,3 +1,4 @@
+// src/features/agents/agentApiSlice.ts
 /**
  * Agent Management API Slice
  * 
@@ -19,6 +20,7 @@
  */
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { features } from 'process';
 
 // Mock data for demo
 const mockAgents = [
@@ -47,24 +49,54 @@ const mockAgents = [
   }
 ];
 
-// Define types for agent configuration
+/**
+ * Configuration interface for AI agent settings
+ * Used to initialize and customize agent behavior
+ */
 export interface AgentConfiguration {
+  /** API key for authentication with AI service */
   apiKey?: string;
+  /** Base URL for AI service endpoint */
   endpoint?: string;
+  /** Request timeout in milliseconds */
   timeout?: number;
+  /** Number of retry attempts for failed requests */
   retries?: number;
+  /** Custom headers for API requests */
   headers?: Record<string, string>;
-  // Add other expected configuration properties here
+  /**
+   * Additional configuration properties might include:
+   * - model: string (e.g., 'gpt-4', 'claude-2')
+   * - temperature: number
+   * - maxTokens: number
+   * - contextWindow: number
+   */
 }
 
-// Define a type for the expected agent data
+/**
+ * Core Agent interface representing an AI agent instance
+ * @property id - Unique identifier for the agent
+ * @property name - Display name of the agent
+ * @property description - Optional description of agent's purpose/capabilities
+ * @property status - Current operational status
+ * @property configuration - Optional agent-specific settings
+ * @property createdAt - ISO timestamp of agent creation
+ * @property lastUsed - Optional ISO timestamp of last activity
+ */
 export interface Agent {
+  /** Unique identifier for the agent */
   id: string;
+  /** Display name of the agent */
   name: string;
+  /** Optional description of agent's purpose/capabilities */
   description?: string;
+  /** Current operational status */
   status: 'active' | 'inactive' | 'error';
+  /** Optional agent-specific settings */
   configuration?: AgentConfiguration;
+  /** ISO timestamp of agent creation */
   createdAt: string;
+  /** Optional ISO timestamp of last activity */
   lastUsed?: string;
 }
 

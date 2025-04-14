@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ThemeProvider } from "@/components/theme-provider";
 import AppRoutes from './router/AppRoutes';
-import './index.css'
+import './styles.css'; // Use the correct global CSS file
 import { Provider } from 'react-redux'
 import { store } from './store/store'
 import { Toaster } from "@/components/ui/sonner";

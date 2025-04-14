@@ -2,6 +2,7 @@
   // TypeScript compiler configuration
   "compilerOptions": {
     // Store incremental compilation information
+    "baseUrl": "./",
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     
     // Target ECMAScript version
@@ -20,7 +21,7 @@
 
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": false,
+    "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": false,
@@ -30,7 +31,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
+    "noUncheckedSideEffectImports": false,
     // Ensure consistent file casing across different operating systems
     "forceConsistentCasingInFileNames": true,
 

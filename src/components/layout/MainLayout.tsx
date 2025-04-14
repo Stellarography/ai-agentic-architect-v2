@@ -46,14 +46,14 @@ const MainLayout: React.FC<MainLayoutProps> = ({ sidebar, children, infoPanel })
   };
 
   return (
-    <div className="min-h-screen w-full bg-background text-foreground">
+    <div className="flex flex-col min-h-screen w-full bg-background text-foreground">
       <Header onMobileMenuClick={handleMobileMenuClick} />
       
-      <div className="grid h-full w-full
+      <div className="flex-1 grid w-full
         grid-cols-1
         sm:grid-cols-1
         md:grid-cols-[240px,1fr,300px]
-        gap-4 p-4"
+        gap-4 p-4 overflow-hidden"
       >
         <aside className="hidden md:block bg-card backdrop-blur-sm rounded-lg p-4 min-h-[500px]
           shadow-lg shadow-electric-blue/5 hover:shadow-electric-blue/10 transition-shadow"

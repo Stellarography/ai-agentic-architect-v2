@@ -55,3 +55,39 @@ Built-in transitions and animations:
 - hover:scale-105
 - transition-colors
 - animate-pulse
+
+# Tailwind Configuration Documentation
+
+## Design Tokens
+
+Our design system uses CSS custom properties (variables) to maintain consistent theming across light and dark modes.
+
+Key tokens:
+
+- `--primary`: Main brand color
+  - Light: `oklch(0.208 0.042 265.755)`
+  - Dark: `oklch(0.929 0.013 255.508)`
+  - Used for primary buttons, links, and interactive elements
+
+- `--background`: Page background color
+  - Light: `oklch(1 0 0)`
+  - Dark: `oklch(0.129 0.042 264.695)`
+  - Used for the main page background
+
+- `--muted-foreground`: Desaturated text color
+  - Light: `oklch(0.554 0.046 257.417)`
+  - Dark: `oklch(0.704 0.04 256.788)`
+  - Used for secondary text, placeholders, and disabled states
+
+### Usage Example
+
+```css
+.primary-button {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.secondary-text {
+  color: var(--muted-foreground);
+}
+```

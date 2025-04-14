@@ -1,3 +1,6 @@
+//tsconfig.json
+// This is the main configuration file for the TypeScript compiler.
+// It extends the app configuration and includes additional settings for the project.
 {
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
@@ -9,7 +12,10 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "src/*": ["./src/*"],
+      "components/*":["./src/components/*"],
+      "assets": ["./src/assets/*"],
+      "lib": ["./src/lib/*"],
     },
     "types": ["node", "vite/client"],
     "resolveJsonModule": true,

@@ -20,9 +20,9 @@ A scalable, futuristic AI workflow manager built with React, Vite, Tailwind, and
 - **Framework:** React 18 with Vite
 - **Language:** TypeScript
 - **Styling:** 
-  - Tailwind CSS v3.4 with custom theme
+  - Tailwind CSS v4.1.3 with custom theme and OKLCH color space
   - PostCSS for processing
-  - shadcn/ui component library
+  - shadcn/ui component library with dark mode support
 - **State Management:** Zustand
 - **Real-time:** WebSocket
 - **Form Handling:** React Hook Form + Zod
@@ -77,8 +77,8 @@ src/
 ## Installation & Setup
 
 ```bash
-# Install dependencies
-npm install
+# Install dependencies with specific Tailwind version
+npm install -D tailwindcss@4.1.3 tailwindcss-animate
 
 # Start development server
 npm run dev
@@ -89,10 +89,11 @@ npm run build
 
 ## Critical Development Notes
 
-1. **Tailwind CSS Requirements:**
-   - Must have both tailwind.config.js and postcss.config.cjs properly configured
-   - Requires @tailwind directives in src/index.css
-   - Content paths must include all template files
+1. **Tailwind CSS v4.1.3 Requirements:**
+   - Uses modern OKLCH color space for better color handling
+   - Requires proper PostCSS configuration
+   - Supports dark mode with class strategy
+   - Uses CSS variables for dynamic theming
 
 2. **Theme Support:**
    - Uses CSS variables for theming
